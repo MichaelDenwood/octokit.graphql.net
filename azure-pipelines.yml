@@ -29,6 +29,7 @@ steps:
 #     command: 'build'
 #     projects: '$(solution)'
 # - script: dotnet restore 
+- script: dotnet -info
 - script: dotnet build
 # - task: NuGetToolInstaller@0
 
