@@ -15,8 +15,21 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: dotnet restore 
-- script: dotnet build
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '5.0.100'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: '$(solution)'
+    feedsToUse: 'select'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '$(solution)'
+# - script: dotnet restore 
+# - script: dotnet build
 # - task: NuGetToolInstaller@0
 
 # - task: NuGetCommand@2
