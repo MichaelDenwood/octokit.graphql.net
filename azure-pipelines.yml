@@ -17,6 +17,14 @@ variables:
 steps:
  - script: dotnet restore 
  - script: dotnet build 
+ - script: dotnet pack Octokit.GraphQL.Pack/Octokit.GraphQL.Pack.csproj --output '$(Build.ArtifactStagingDirectory)'
+ - task: DotNetCoreCLI@2
+   inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'DevSupportServices'
+
 # - task: NuGetToolInstaller@0
 
 # - task: NuGetCommand@2
