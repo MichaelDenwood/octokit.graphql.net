@@ -24,12 +24,12 @@ steps:
 #      packagesToPack: 'Octokit.GraphQL.Core/Octokit.GraphQL.Core.csproj'
 #      versioningScheme: 'off'
  - script: dotnet pack Octokit.GraphQL.Pack/Octokit.GraphQL.Pack.csproj --output $(Build.ArtifactStagingDirectory)
-#  - task: DotNetCoreCLI@2
-#    inputs:
-#     command: 'push'
-#     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-#     nuGetFeedType: 'external'
-#     publishFeedCredentials: 'DevSupportServices'
+ - task: DotNetCoreCLI@2
+   inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'DevSupportServices'
  - task: PublishBuildArtifacts@1
    inputs:
      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
@@ -41,20 +41,3 @@ steps:
      ArtifactName: 'dropS'
      publishLocation: 'Container'
 
-# - task: NuGetToolInstaller@0
-
-# - task: NuGetCommand@2
-#   inputs:
-#     restoreSolution: '$(solution)'
-
-# - task: VSBuild@1
-#   inputs:
-#     solution: '$(solution)'
-#     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
-#     platform: '$(buildPlatform)'
-#     configuration: '$(buildConfiguration)'
-
-# - task: VSTest@2
-#   inputs:
-#     platform: '$(buildPlatform)'
-#     configuration: '$(buildConfiguration)'
