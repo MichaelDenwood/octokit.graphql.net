@@ -6,8 +6,8 @@
 trigger:
 - master
 
-pool: 'default'
-  #vmimage: 'windows-2019'
+pool:
+  vmimage: 'windows-2019'
 
 variables:
   solution: '**/*.sln'
@@ -29,6 +29,16 @@ steps:
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
     nuGetFeedType: 'external'
     publishFeedCredentials: 'DevSupportServices'
+ - task: PublishBuildArtifacts@1
+   inputs:
+     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+     ArtifactName: 'drop'
+     publishLocation: 'Container'
+ - task: PublishBuildArtifacts@1
+   inputs:
+     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+     ArtifactName: 'dropS'
+     publishLocation: 'Container'
 
 # - task: NuGetToolInstaller@0
 
