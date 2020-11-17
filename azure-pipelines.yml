@@ -20,10 +20,10 @@ steps:
  - script: dotnet build 
  - task: DotNetCoreCLI@2
    inputs:
-    command: 'pack'
-    packagesToPack: 'Octokit.GraphQL.nuspec'
-    nobuild: true
-    versioningScheme: 'off'
+     command: 'pack'
+     packagesToPack: 'Octokit.GraphQL.Core/Octokit.GraphQL.Core.csproj'
+     nobuild: true
+     versioningScheme: 'off'
  - task: DotNetCoreCLI@2
    inputs:
     command: 'push'
