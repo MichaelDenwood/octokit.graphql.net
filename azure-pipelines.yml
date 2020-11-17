@@ -23,7 +23,6 @@ steps:
      command: 'pack'
      packagesToPack: 'Octokit.GraphQL.Core/Octokit.GraphQL.Core.csproj'
      versioningScheme: 'off'
-     buildProperties: '--output $(Build.ArtifactStagingDirectory)'
  - task: DotNetCoreCLI@2
    inputs:
     command: 'push'
