@@ -18,13 +18,8 @@ variables:
 steps:
  - script: dotnet restore 
  - script: dotnet build 
- #- script: dotnet pack Octokit.GraphQL.Pack\Octokit.GraphQL.Pack.csproj --output '$(Build.ArtifactStagingDirectory)'
-                        #\Octokit.GraphQL.IntegrationTests\Octokit.GraphQL.IntegrationTests.csproj
-              # D:\a\1\s\Octokit.GraphQL.Core.UnitTests\bin\Debug\netcoreapp3.1\Octokit.GraphQL.Core.UnitTests.dll
-              # octokit.graphql.net/Octokit.GraphQL.Pack/Octokit.GraphQL.Pack.csproj
-
-- task: DotNetCoreCLI@2
-  inputs:
+ - task: DotNetCoreCLI@2
+   inputs:
     command: 'pack'
     packagesToPack: 'Octokit.GraphQL.nuspec'
     nobuild: true
