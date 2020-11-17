@@ -18,7 +18,11 @@ variables:
 steps:
  - script: dotnet restore 
  - script: dotnet build 
- - script: dotnet pack Octokit.GraphQL.Pack/Octokit.GraphQL.Pack.csproj --output '$(Build.ArtifactStagingDirectory)'
+ - script: dotnet pack **\*.Octokit.GraphQL.Pack.csproj --output '$(Build.ArtifactStagingDirectory)'
+              # D:\a\1\s\Octokit.GraphQL.Core.UnitTests\bin\Debug\netcoreapp3.1\Octokit.GraphQL.Core.UnitTests.dll
+              # octokit.graphql.net/Octokit.GraphQL.Pack/Octokit.GraphQL.Pack.csproj
+
+
  - task: DotNetCoreCLI@2
    inputs:
     command: 'push'
