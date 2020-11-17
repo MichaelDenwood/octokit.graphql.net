@@ -18,11 +18,12 @@ variables:
 steps:
  - script: dotnet restore 
  - script: dotnet build -c $(buildconfiguration)
- - task: DotNetCoreCLI@2
-   inputs:
-     command: 'pack'
-     packagesToPack: 'Octokit.GraphQL.Core/Octokit.GraphQL.Core.csproj'
-     versioningScheme: 'off'
+#  - task: DotNetCoreCLI@2
+#    inputs:
+#      command: 'pack'
+#      packagesToPack: 'Octokit.GraphQL.Core/Octokit.GraphQL.Core.csproj'
+#      versioningScheme: 'off'
+ - script: dotnet pack Octokit.GraphQL.Pack/Octokit.GraphQL.Pack.csproj --output $(Build.ArtifactStagingDirectory)
 #  - task: DotNetCoreCLI@2
 #    inputs:
 #     command: 'push'
