@@ -24,12 +24,12 @@ steps:
 #      packagesToPack: 'Octokit.GraphQL.Core/Octokit.GraphQL.Core.csproj'
 #      versioningScheme: 'off'
  - script: dotnet pack Octokit.GraphQL.Pack/Octokit.GraphQL.Pack.csproj --output $(Build.ArtifactStagingDirectory)
- - task: DotNetCoreCLI@2
-   inputs:
-    command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-    nuGetFeedType: 'external'
-    publishFeedCredentials: 'DevSupportServices'
+#  - task: DotNetCoreCLI@2
+#    inputs:
+#     command: 'push'
+#     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+#     nuGetFeedType: 'external'
+#     publishFeedCredentials: 'DevSupportServices'
  - task: DotNetCoreCLI@2
    inputs:
     command: 'push'
